@@ -11,7 +11,7 @@ import Stripe from 'stripe';
 describe('Stripe Integration', () => {
   const stripeSecretKey = process.env.STRIPE_LIVE_SECRET_KEY || process.env.STRIPE_SECRET_KEY || '';
   const stripe = new Stripe(stripeSecretKey, {
-    apiVersion: '2025-11-17.clover',
+    apiVersion: '2025-12-15.clover',
   });
 
   it('should initialize Stripe SDK successfully', () => {

@@ -161,14 +161,22 @@ STRIPE_PRICE_CREDITS_100="price_..."
 ### Email Notifications
 
 ```bash
-SEND_GRID="your_sendgrid_api_key_here"
+SENDGRID_API_KEY="your_sendgrid_api_key_here"
+FROM_EMAIL="info.infinitycreators@gmail.com"
 ```
 
-- **Purpose**: SendGrid API for transactional emails
-- **Get it**: https://sendgrid.com → Settings → API Keys
-- **Format**: String (e.g., `SG.abc...`)
-- **Required**: ✅ Yes
-- **Note**: Verify sender email in SendGrid before sending
+- **SENDGRID_API_KEY**
+  - **Purpose**: SendGrid API for transactional emails
+  - **Get it**: https://sendgrid.com → Settings → API Keys
+  - **Format**: String (e.g., `SG.abc...`)
+  - **Required**: ✅ Yes
+  - **Note**: Verify sender email in SendGrid before sending
+
+- **FROM_EMAIL**
+  - **Purpose**: Email address to send emails from
+  - **Format**: Email address (e.g., `info.infinitycreators@gmail.com`)
+  - **Required**: ✅ Yes
+  - **Note**: Must be verified in SendGrid dashboard
 
 ### Webhooks (Optional)
 
@@ -236,7 +244,8 @@ After adding secrets, restart the dev server:
 | `STRIPE_PRICE_CREDITS_10` | Manual | ✅ | ❌ | 10 credits price ID |
 | `STRIPE_PRICE_CREDITS_50` | Manual | ✅ | ❌ | 50 credits price ID |
 | `STRIPE_PRICE_CREDITS_100` | Manual | ✅ | ❌ | 100 credits price ID |
-| `SEND_GRID` | Manual | ✅ | ❌ | SendGrid API key |
+| `SENDGRID_API_KEY` | Manual | ✅ | ❌ | SendGrid API key |
+| `FROM_EMAIL` | Manual | ✅ | ❌ | Email address to send from |
 | `WEBHOOK` | Manual | ❌ | ❌ | Custom webhook URL (optional) |
 
 ---
@@ -290,11 +299,12 @@ After adding secrets, restart the dev server:
 ### Issue: "SendGrid emails not sending"
 
 **Solution:**
-1. Verify `SEND_GRID` API key is correct
-2. Check sender email is verified in SendGrid Dashboard
-3. Review SendGrid activity logs for errors
-4. Check spam folder
-5. Ensure email templates are configured correctly
+1. Verify `SENDGRID_API_KEY` API key is correct
+2. Verify `FROM_EMAIL` is set and verified in SendGrid Dashboard
+3. Check sender email is verified in SendGrid Dashboard
+4. Review SendGrid activity logs for errors
+5. Check spam folder
+6. Ensure email templates are configured correctly
 
 ---
 

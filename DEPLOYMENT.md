@@ -100,7 +100,8 @@ STRIPE_PRICE_CREDITS_50="price_..." # 50 credits one-time purchase
 STRIPE_PRICE_CREDITS_100="price_..." # 100 credits one-time purchase
 
 # Email Notifications (Required)
-SEND_GRID="your_sendgrid_api_key"
+SENDGRID_API_KEY="your_sendgrid_api_key"
+FROM_EMAIL="info.infinitycreators@gmail.com"
 
 # Webhooks (Optional)
 WEBHOOK="your_webhook_url_for_notifications"
@@ -455,12 +456,13 @@ Use Stripe test cards:
 **Symptoms**: Users not receiving emails
 
 **Solutions**:
-1. Verify `SEND_GRID` API key is set in Manus Secrets
-2. Check SendGrid sender verification status
-3. Review email logs in SendGrid dashboard
-4. Check spam folder
-5. Verify `from` email is verified in SendGrid
-6. Restart dev server after adding SendGrid key
+1. Verify `SENDGRID_API_KEY` API key is set in Manus Secrets
+2. Verify `FROM_EMAIL` is set in Manus Secrets
+3. Check SendGrid sender verification status
+4. Review email logs in SendGrid dashboard
+5. Check spam folder
+6. Verify `FROM_EMAIL` address is verified in SendGrid
+7. Restart dev server after adding SendGrid key
 
 ### Issue: Referral System Not Working
 
