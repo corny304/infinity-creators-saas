@@ -143,7 +143,8 @@ Generate engaging TikTok, Instagram Reels, and YouTube Shorts scripts in 30 seco
    STRIPE_PRICE_CREDITS_100="price_..."
 
    # Email
-   SEND_GRID="your_sendgrid_api_key"
+   SENDGRID_API_KEY="your_sendgrid_api_key"
+   FROM_EMAIL="info.infinitycreators@gmail.com"
 
    # Authentication (auto-configured on Manus)
    JWT_SECRET="your_jwt_secret_min_32_chars"
@@ -342,7 +343,8 @@ Add these through Manus Management UI → Settings → Secrets:
 - `STRIPE_PRICE_CREDITS_10` - 10 credits price ID
 - `STRIPE_PRICE_CREDITS_50` - 50 credits price ID
 - `STRIPE_PRICE_CREDITS_100` - 100 credits price ID
-- `SEND_GRID` - SendGrid API key for email notifications
+- `SENDGRID_API_KEY` - SendGrid API key for email notifications
+- `FROM_EMAIL` - Email address to send from (must be verified in SendGrid)
 
 ---
 
