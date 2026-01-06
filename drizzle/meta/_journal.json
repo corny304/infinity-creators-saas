@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1765019228882,
+      "tag": "0000_melted_colossus",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1765019319064,
+      "tag": "0001_wonderful_firebrand",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1765066141217,
+      "tag": "0002_watery_princess_powerful",
+      "breakpoints": true
+    }
+  ]
+}

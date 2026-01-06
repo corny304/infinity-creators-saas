@@ -1,0 +1,76 @@
+name: Deploy to Manus
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Manus Platform
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm test
+        env:
+          NODE_ENV: test
+
+      - name: Build project
+        run: pnpm build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to Manus
+        run: |
+          echo "Deployment to Manus Platform"
+          echo "Note: Manus deployment is handled through the Manus Management UI"
+          echo "This workflow ensures the code is tested and builds successfully"
+          echo "To deploy, create a checkpoint in Manus and click the 'Publish' button"
+        
+      - name: Create deployment summary
+        run: |
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Build successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. Go to Manus Management UI" >> $GITHUB_STEP_SUMMARY
+          echo "2. Create a new checkpoint" >> $GITHUB_STEP_SUMMARY
+          echo "3. Click the 'Publish' button to deploy" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Info" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Author: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Notify deployment status
+        if: success()
+        run: |
+          echo "Deployment workflow completed successfully"
+          echo "Ready for manual deployment through Manus Management UI"
+
+# Note: Manus Platform uses its own deployment system
+# This workflow validates that the code is ready to deploy
+# Actual deployment happens through the Manus Management UI:
+# 1. Create a checkpoint (webdev_save_checkpoint)
+# 2. Click "Publish" button in Management UI
+# 3. Manus handles zero-config deployment with automatic SSL, CDN, and custom domains
